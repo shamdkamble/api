@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weight and Distance Converter</title>
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+<div>
+    <h2>Weight and Distance Converter</h2>
+    <form action="/convert" method="post">
+        <div>
+            <label for="conversionType">Select conversion type:</label>
+            <select id="conversionType" name="conversionType" onchange="changeUnits()">
+                <option value="weight">Weight</option>
+                <option value="distance">Distance</option>
+            </select>
+        </div>
+        <div>
+            <label for="value">Enter value:</label>
+            <input type="number" id="value" name="value" required>
+        </div>
+        <div>
+            <label for="unitFrom">Unit to convert from:</label>
+            <select id="unitFrom" name="unitFrom">
+                <!-- Options will be dynamically added based on user's selection -->
+            </select>
+        </div>
+        <div>
+            <label for="unitTo">Unit to convert to:</label>
+            <select id="unitTo" name="unitTo">
+                <!-- Options will be dynamically added based on user's selection -->
+            </select>
+        </div>
+        <button type="submit">Convert</button>
+    </form>
+</div>
+
+<script>
+function changeUnits() {
+    var conversionType = document.getElementById("conversionType").value;
+    var unitFromSelect = document.getElementById("unitFrom");
+    var unitToSelect = document.getElementById("unitTo");
+
+    // Clear existing options
+    unitFromSelect.innerHTML = "";
+    unitToSelect.innerHTML = "";
+
+    // Add options based on conversion type
+    if (conversionType === "weight") {
+        unitFromSelect.options.add(new Option("Kilograms (kg)", "kg"));
+        unitFromSelect.options.add(new Option("Pounds (lb)", "lb"));
+        unitToSelect.options.add(new Option("Kilograms (kg)", "kg"));
+        unitToSelect.options.add(new Option("Pounds (lb)", "lb"));
+    } else if (conversionType === "distance") {
+        unitFromSelect.options.add(new Option("Meters (m)", "m"));
+        unitFromSelect.options.add(new Option("Feet (ft)", "ft"));
+        unitToSelect.options.add(new Option("Meters (m)", "m"));
+        unitToSelect.options.add(new Option("Feet (ft)", "ft"));
+    }
+}
+
+// Call the function on page load to initialize units
+changeUnits();
+</script>
+</body>
+</html>
