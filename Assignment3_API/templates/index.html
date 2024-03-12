@@ -9,6 +9,7 @@
 <body>
 <div>
     <h2>Weight and Distance Converter</h2>
+    <br>
     <form action="/convert" method="post">
         <div>
             <label for="conversionType">Select conversion type:</label>
@@ -38,6 +39,7 @@
 </div>
 
 <script>
+//This functions dynamically change the unit based on converstion type 
 function changeUnits() {
     var conversionType = document.getElementById("conversionType").value;
     var unitFromSelect = document.getElementById("unitFrom");
@@ -51,13 +53,19 @@ function changeUnits() {
     if (conversionType === "weight") {
         unitFromSelect.options.add(new Option("Kilograms (kg)", "kg"));
         unitFromSelect.options.add(new Option("Pounds (lb)", "lb"));
+        unitFromSelect.options.add(new Option("Grams (g)", "g")); 
         unitToSelect.options.add(new Option("Kilograms (kg)", "kg"));
         unitToSelect.options.add(new Option("Pounds (lb)", "lb"));
+        unitToSelect.options.add(new Option("Grams (g)", "g")); 
     } else if (conversionType === "distance") {
         unitFromSelect.options.add(new Option("Meters (m)", "m"));
         unitFromSelect.options.add(new Option("Feet (ft)", "ft"));
+        unitFromSelect.options.add(new Option("Centimeters (cm)", "cm")); 
+        unitFromSelect.options.add(new Option("Kilometers (km)", "km")); 
         unitToSelect.options.add(new Option("Meters (m)", "m"));
         unitToSelect.options.add(new Option("Feet (ft)", "ft"));
+        unitToSelect.options.add(new Option("Centimeters (cm)", "cm")); 
+        unitToSelect.options.add(new Option("Kilometers (km)", "km")); 
     }
 }
 
@@ -66,3 +74,4 @@ changeUnits();
 </script>
 </body>
 </html>
+

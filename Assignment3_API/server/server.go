@@ -1,9 +1,8 @@
-// server/server.go
 package server
 
 import (
+	"fmt"
 	"net/http"
-
 	"workspace/handler"
 
 	"github.com/gorilla/mux"
@@ -12,6 +11,7 @@ import (
 // StartServer starts the HTTP server
 func StartServer() {
 	r := mux.NewRouter()
+	handler.DbConnection()
 
 	// Define routes
 	r.HandleFunc("/", handler.IndexHandler).Methods("GET")
@@ -20,6 +20,6 @@ func StartServer() {
 	// Serve static files using built-in http.FileServer
 	fs := http.FileServer(http.Dir("static"))
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
-
-	http.ListenAndServe(":8080", r)
+	fmt.Println("Server started at http://localhost:5000")
+	http.ListenAndServe(":5000", r)
 }

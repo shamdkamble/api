@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      - ./templates:/app/templates
+      - ./static:/app/static
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: abc
+      DB_NAME: conversion_db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: abc
+      POSTGRES_DB: conversion_db
+    ports:
+      - "127.0.0.1:6000:5432"

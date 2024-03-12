@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conversion Result</title>
-<link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversion Result</title>
+    <link rel="stylesheet" href="/static/styleresult.css" />
 </head>
+
 <body>
-<h2>Conversion Result</h2>
-<p>The result is: {{ .Value }} {{ .UnitTo }}</p>
-<a href="/">Back to Converter</a>
+    <div class="output">
+        <h2>Conversion Result</h2>
+        <p>
+        <h3>The conversion of {{ .Input }}{{ .UnitFrom }} is {{ .Value }} {{ .UnitTo
+            }}
+        </h3>
+        </p>
+    </div>
+    <div class="back-button">
+        <button><a href="/">Back to Home</a></button>
+    </div>
 </body>
+
 </html>
